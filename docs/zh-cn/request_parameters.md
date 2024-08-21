@@ -21,20 +21,20 @@
 
 以下是用于自定义请求的请求头完整列表：
 
-| 参数                                                            |    类型     |                       默认值                        |  支持版本  |            必填             | 描述                                                                                                                              |
-|---------------------------------------------------------------|:---------:|:------------------------------------------------:|:------:|:-------------------------:|---------------------------------------------------------------------------------------------------------------------------------|
+| 参数                                                            |    类型     |                       默认值                        |  支持版本  |                  必填                  | 描述                                                                                                                              |
+|---------------------------------------------------------------|:---------:|:------------------------------------------------:|:------:|:------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------|
 | [x-cb-apikey](/zh-cn/parameters?id=APIKEY)                    | `string`  | [去控制台获取](https://console.cloudbypass.com/#/api/) | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 访问穿云API时使用的密钥                                                                                                                   |
 | [x-cb-host](/zh-cn/parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                  | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 请求的目标域名，如：opensea.io，不要填协议和路径                                                                                                   |
-| [x-cb-protocol](/zh-cn/parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                           | 请求协议，如：http、https                                                                                                               |
-| [x-cb-fp](/zh-cn/parameters?id=X-Cb-Fp)                       | `string`  |                     "chrome"                     |  `v1`  |                           | 客户端指纹，默认是Chrome浏览器的指纹。除此之外还支持Firefox、Edge。                                                                                      |
-| [x-cb-proxy](/zh-cn/parameters?id=X-Cb-Proxy)                 | `string`  |                                                  | `所有版本` |                           | 自定义代理地址，可以是IP或域名。<br />支持http、socks5协议，如：http://proxy.com:8080 或 http://username:password:proxy.com:8080。<br />协议头可选，不填默认为http。 |
-| x-cb-version                                                  | `string`  |                                                  | `所有版本` |                           | 当您需要使用穿云v2时，该请求头值应为`2`。                                                                                                         |
-| [x-cb-part](/zh-cn/parameters?id=X-Cb-Part)                   | `integer` |                        0                         |  `v2`  |                           | 该请求头仅在穿云v2时有效，用于区分不同的会话，用户最多可以拥有1000个会话分区（0~999）。                                                                               |
-| [x-cb-origin](/zh-cn/parameters?id=关于浏览器跨域的问题)                | `string`  |                                                  | `所有版本` |                           | 替换请求头中的origin字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
-| [x-cb-referer](/zh-cn/parameters?id=关于浏览器跨域的问题)               | `string`  |                                                  | `所有版本` |                           | 替换请求头中的referer字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                           |
-| x-cb-cookie                                                   | `string`  |                                                  | `所有版本` |                           | 替换请求头中的cookie字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
-| [x-cb-sitekey](/zh-cn/parameters?id=如何获取sitekey)              | `string`  |                                                  |  `v2`  |                           | 填写后将触发Turnstile小部件验证。在请求数据中将cf_token值设置为[cf_token]，验证结果将自动替填充后请求。                                                               |
-| [x-cb-options](/zh-cn/parameters?id=配置选项列表)                   | `string`  |                                                  | `所有版本` |                           | 配置选项列表，可以填写多个附加配置选项，逗号分隔。详细请查看[配置选项列表](/zh-cn/parameters?id=配置选项列表)。                                                            |
+| [x-cb-protocol](/zh-cn/parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                                      | 请求协议，如：http、https                                                                                                               |
+| [x-cb-fp](/zh-cn/parameters?id=X-Cb-Fp)                       | `string`  |                     "chrome"                     |  `v1`  |                                      | 客户端指纹，默认是Chrome浏览器的指纹。除此之外还支持Firefox、Edge。                                                                                      |
+| [x-cb-proxy](/zh-cn/parameters?id=X-Cb-Proxy)                 | `string`  |                                                  | `所有版本` |                                      | 自定义代理地址，可以是IP或域名。<br />支持http、socks5协议，如：http://proxy.com:8080 或 http://username:password:proxy.com:8080。<br />协议头可选，不填默认为http。 |
+| x-cb-version                                                  | `string`  |                                                  | `所有版本` |                                      | 当您需要使用穿云v2时，该请求头值应为`2`。                                                                                                         |
+| [x-cb-part](/zh-cn/parameters?id=X-Cb-Part)                   | `integer` |                        0                         |  `v2`  |                                      | 该请求头仅在穿云v2时有效，用于区分不同的会话，用户最多可以拥有1000个会话分区（0~999）。                                                                               |
+| [x-cb-origin](/zh-cn/parameters?id=关于浏览器跨域的问题)                | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的origin字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
+| [x-cb-referer](/zh-cn/parameters?id=关于浏览器跨域的问题)               | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的referer字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                           |
+| x-cb-cookie                                                   | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的cookie字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
+| [x-cb-sitekey](/zh-cn/parameters?id=如何获取sitekey)              | `string`  |                                                  |  `v2`  |                                      | 填写后将触发Turnstile小部件验证。在请求数据中将cf_token值设置为[cf_token]，验证结果将自动替填充后请求。                                                               |
+| [x-cb-options](/zh-cn/parameters?id=配置选项列表)                   | `string`  |                                                  | `所有版本` |                                      | 配置选项列表，可以填写多个附加配置选项，逗号分隔。详细请查看[配置选项列表](/zh-cn/parameters?id=配置选项列表)。                                                            |
 
 ### 配置选项列表
 
@@ -55,6 +55,12 @@
 
 访问`https://opensea.io/category/memberships`，请求示例：
 
+
+
+<!-- tabs:start -->
+
+#### **cURL**
+
 ```shell
 # linux
 curl --request GET \
@@ -68,6 +74,158 @@ curl --request GET ^
 --header "x-cb-apikey: <APIKEY>" ^
 --header "x-cb-host: opensea.io"
 ```
+
+#### **Python**
+
+```Python
+import requests
+
+url = "https://api.cloudbypass.com/category/memberships"
+
+headers = {
+    'x-cb-apikey': '<APIKEY>',
+    'x-cb-host': 'opensea.io',
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.text)
+```
+
+* **Python SDK**
+
+```Python
+# pip install cloudbypass --upgrade
+from cloudbypass import Session
+
+if __name__ == '__main__':
+    with Session(apikey="<APIKEY>") as session:
+        resp = session.get("https://opensea.io/category/memberships")
+        print(resp.status_code, resp.headers.get("x-cb-status"))
+        print(resp.text)
+```
+
+#### **Go**
+
+```go
+// # Go Modules
+// require github.com/go-resty/resty/v2 v2.7.0
+package main
+
+import (
+	"fmt"
+	"github.com/go-resty/resty/v2"
+)
+
+func main() {
+	client := resty.New()
+
+	client.Header.Add("X-Cb-Apikey", "/* APIKEY */")
+	client.Header.Add("X-Cb-Host", "opensea.io")
+
+	resp, err := client.R().Get("https://api.cloudbypass.com/category/memberships")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(resp.StatusCode(), resp.Header().Get("X-Cb-Status"))
+	fmt.Println(resp.String())
+}
+```
+
+* **Go SDK**
+
+```go
+// https://github.com/cloudbypass/golang-sdk
+package main
+
+import (
+	"fmt"
+	"github.com/cloudbypass/golang-sdk/cloudbypass"
+)
+
+func main() {
+	client := cloudbypass.New(cloudbypass.BypassConfig{
+		Apikey: "/* APIKEY */",
+	})
+
+	resp, err := client.R().
+		EnableTrace().
+		Get("https://opensea.io/category/memberships")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(resp.StatusCode(), resp.Header().Get("X-Cb-Status"))
+	fmt.Println(resp.String())
+}
+```
+
+#### **Nodejs**
+
+```javascript
+const axios = require('axios');
+
+const url = "https://api.cloudbypass.com/category/memberships";
+const headers = {
+    'x-cb-apikey': '/* APIKEY */',
+    'x-cb-host': 'opensea.io',
+};
+
+axios.get(url, {}, {headers: headers})
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+```
+
+* **Nodejs SDK**
+
+```javascript
+// https://github.com/cloudbypass/nodejs-sdk
+import cloudbypass from 'cloudbypass-sdk';
+
+cloudbypass.get('https://opensea.io/category/memberships', {
+    cb_apikey: '/* APIKEY */'
+})
+    .then(function (response) {
+        console.log(response.status, response.headers.get("x-cb-status"));
+        console.log(response.data);
+    })
+    .catch(function (error) {
+        console.log(error.response.data || error.response || error.message);
+    });
+```
+
+#### **Java**
+
+```Java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        String url = "https://api.cloudbypass.com/category/memberships";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("x-cb-apikey", "/* APIKEY */")
+                .header("x-cb-host", "opensea.io")
+                .GET(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+    }
+}
+```
+
+<!-- tabs:end -->
 
 ### X-Cb-Host、X-Cb-Protocol
 
@@ -141,6 +299,10 @@ X-Cb-Protocol: http
 
 穿云API V2适用于需要通过JS质询验证的网站。例如访问`https://etherscan.io/accounts/label/lido`，请求示例：
 
+<!-- tabs:start -->
+
+#### **cURL**
+
 ```shell
 # linux
 curl --request GET \
@@ -149,7 +311,7 @@ curl --request GET \
 --header "x-cb-host: etherscan.io" \
 --header "x-cb-version: 2" \
 --header "x-cb-part: 0" \
---header "x-cb-proxy: http:proxy:1087"
+--header "x-cb-proxy: <PROXY>"
 
 # windows
 curl --request GET ^
@@ -158,8 +320,177 @@ curl --request GET ^
 --header "x-cb-host: etherscan.io" ^
 --header "x-cb-version: 2" ^
 --header "x-cb-part: 0" ^
---header "x-cb-proxy: http:proxy:1087"
+--header "x-cb-proxy: <PROXY>"
 ```
+
+#### **Python**
+
+```Python
+import requests
+
+url = "https://api.cloudbypass.com/accounts/label/lido"
+
+headers = {
+    'x-cb-apikey': '<APIKEY>',
+    "x-cb-host": r"etherscan.io",
+    "x-cb-version": r"2",
+    "x-cb-part": r"0",
+    "x-cb-proxy": r"<PROXY>",
+}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.text)
+```
+
+* **Python SDK**
+
+```Python
+# pip install cloudbypass --upgrade
+from cloudbypass import Session
+
+if __name__ == '__main__':
+    with Session(apikey="<APIKEY>", proxy="<PROXY>") as session:
+        resp = session.get("https://etherscan.io/accounts/label/lido", part="0")
+        print(resp.status_code, resp.headers.get("x-cb-status"))
+        print(resp.text)
+```
+
+#### **Go**
+
+```go
+// # Go Modules
+// require github.com/go-resty/resty/v2 v2.7.0
+package main
+
+import (
+	"fmt"
+	"github.com/go-resty/resty/v2"
+)
+
+func main() {
+	client := resty.New()
+
+	client.Header.Add("X-Cb-Apikey", "/* APIKEY */")
+	client.Header.Add("X-Cb-Host", "etherscan.io")
+	client.Header.Add("X-Cb-Proxy", "/* PROXY */")
+	client.Header.Add("X-Cb-Version", "2")
+	client.Header.Add("X-Cb-Part", "0")
+
+	resp, err := client.R().Get("https://api.cloudbypass.com/accounts/label/lido")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(resp.StatusCode(), resp.Header().Get("X-Cb-Status"))
+	fmt.Println(resp.String())
+}
+```
+
+* **Go SDK**
+
+```go
+// https://github.com/cloudbypass/golang-sdk
+package main
+
+import (
+	"fmt"
+	"github.com/cloudbypass/golang-sdk/cloudbypass"
+)
+
+func main() {
+	client := cloudbypass.New(cloudbypass.BypassConfig{
+		Apikey: "/* APIKEY */",
+		Part:   "0",
+		Proxy:  "/* PROXY */",
+	})
+
+	resp, err := client.R().
+		EnableTrace().
+		Get("https://etherscan.io/accounts/label/lido")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(resp.StatusCode(), resp.Header().Get("X-Cb-Status"))
+	fmt.Println(resp.String())
+}
+```
+
+#### **Nodejs**
+
+```javascript
+const axios = require('axios');
+
+const url = "https://api.cloudbypass.com/accounts/label/lido";
+const headers = {
+  'x-cb-apikey': '/* APIKEY */',
+  'x-cb-host': 'etherscan.io',
+  'x-cb-version': '2',
+  'x-cb-part': '0',
+  'x-cb-proxy': '/* PROXY */',
+};
+
+axios.get(url, {}, {headers: headers})
+        .then(response => console.log(response.data))
+        .catch(error => console.error(error));
+```
+
+* **Nodejs SDK**
+
+```javascript
+// https://github.com/cloudbypass/nodejs-sdk
+import cloudbypass from 'cloudbypass-sdk';
+
+cloudbypass.get('https://etherscan.io/accounts/label/lido', {
+  cb_apikey: '/* APIKEY */',
+  cb_part: '0',
+  cb_proxy: '/* PROXY */'
+})
+.then(function (response) {
+  console.log(response.status, response.headers.get("x-cb-status"));
+  console.log(response.data);
+})
+.catch(function (error) {
+  console.log(error.response.data || error.response || error.message);
+});
+```
+
+#### **Java**
+
+```Java
+// Use java to request https://opensea.io/category/memberships
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        String url = "https://api.cloudbypass.com/accounts/label/lido";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("x-cb-apikey", "/* APIKEY */")
+                .header("x-cb-host", "etherscan.io")
+                .header("x-cb-version", "2")
+                .header("x-cb-part", "0")
+                .header("x-cb-proxy", "/* PROXY */")
+                .GET(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+    }
+}
+```
+
+<!-- tabs:end -->
 
 ### 关于V2并发请求的问题
 

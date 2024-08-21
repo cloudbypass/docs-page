@@ -31,7 +31,12 @@
             color: inherit;
         }
 
+        .docsify-tabs__content {
+            padding: 0 !important;
+        }
+
     </style>
+    <script src="static/docsify-tabs.js"></script>
 </head>
 
 <body>
@@ -79,7 +84,18 @@
                 '/us-en': 'No Results'
             },
             pathNamespaces: ['/zh-cn', '/us-en'],
-        }
+        },
+        plugins: [
+            function (hook, vm) {
+                hook.beforeEach(function (html) {
+                    return (
+                        html +
+                        '\n\n----\n\n' +
+                        '<a href="https://www.cloudbypass.com/" target="_blank" style="color: inherit; font-weight: normal; text-decoration: none;">Powered by chuanchuan</a>'
+                    );
+                })
+            },
+        ],
     };
 </script>
 
@@ -90,6 +106,7 @@
 <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+<script src="./static/docsify-tabs.js"></script>
 
 </body>
 </html>

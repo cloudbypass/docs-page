@@ -4,7 +4,7 @@
 <br/>
 > 使用穿云v2时遇到验证挑战成功会额外消耗`2积分`
 
-包括一下验证:
+包括以下验证:
 
 * `Cloudflare JS质询`
 * `Cloudflare Turnstile`
