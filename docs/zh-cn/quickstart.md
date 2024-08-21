@@ -20,9 +20,12 @@
 查看已有的[网站的代码示例](https://github.com/cloudbypass/example)快速集成到项目。
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/cloudbypass/example ":no-zoom")
-![PyPI - Version](https://img.shields.io/pypi/v/cloudbypass ":no-zoom")
-![NPM Version](https://img.shields.io/npm/v/cloudbypass-sdk ":no-zoom")
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/cloudbypass/golang-sdk ":no-zoom")
+
+* [Python SDK](/zh-cn/python_sdk) ![PyPI - Version](https://img.shields.io/pypi/v/cloudbypass ":no-zoom")
+* [Nodejs SDK](zh-cn/nodejs_sdk) ![NPM Version](https://img.shields.io/npm/v/cloudbypass-sdk ":no-zoom")
+* [Go SDK](zh-cn/golang_sdk) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/cloudbypass/golang-sdk ":no-zoom")
+
+
 
 ### 可访问性测试
 
