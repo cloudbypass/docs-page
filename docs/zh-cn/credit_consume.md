@@ -6,8 +6,8 @@
 
 包括以下验证:
 
-* `Cloudflare JS质询`
-* `Cloudflare Turnstile`
+* `JS质询`
+* `Turnstile`
 * `Kasada`
 * `Incapsula`
 

@@ -1,5 +1,9 @@
 # 请求参数配置
 
+> 您可以了解一下：HTTP基础请求由请求行、请求头、请求体组成，其中请求行包含了请求方法、请求URL、HTTP协议版本。
+> <br/>由于穿云API使用HTTP API进行代理转发的模式，在使用穿云API请求时，需要在原始请求上对**请求URL**、**请求头**进行一些调整。
+> 经过调整后的请求将由穿云API代理访问目标地址。
+
 ### 请求URL配置
 
 穿云API使用HTTPS协议，支持所有HTTP请求方法。您需要将目标地址协议和主机名替换为穿云API地址进行访问，以下是穿云API的请求地址：
@@ -12,46 +16,46 @@
 
 除了URL之外还需要以下请求头参数：
 
-* `x-cb-apikey` *[APIKEY](/zh-cn/quickstart?id=获取apikey)。
-* `x-cb-host` *
-  目标服务器主机名或IP地址。如访问`https://www.example.com/to/path`，则此参数为`www.example.com`，请求地址为`https://api.cloudbypass.com/to/path`。
-* `x-cb-proxy` *设置代理服务器。V1有默认动态代理IP，并支持此参数设置代理服务器地址; 穿云V2必须设置固定或具有时效性的IP代理。
+* [`x-cb-apikey`](/zh-cn/request_parameters?id=X-Cb-Apikey) *[APIKEY](/zh-cn/quickstart?id=获取apikey) 访问穿云API的唯一密钥。
+* [`x-cb-host`](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol) *
+  目标服务器主机名或IP地址，包括端口。如访问`https://www.example.com/to/path`，则此参数为`www.example.com`，请求地址为`https://api.cloudbypass.com/to/path`。
+* [`x-cb-proxy`](/zh-cn/request_parameters?id=X-Cb-Proxy) *设置代理服务器。穿云V1有默认动态代理; 穿云V2必须设置固定或具有时效性的IP代理。
 
-?> 与穿云API关联所有标头都以`x-cb-*`开头，穿云API在转发请求时不会携带相关请求头。
+?> 与穿云API关联所有标头都以`x-cb-*`开头，穿云API在转发请求时不会携带这些请求头。
 
 以下是用于自定义请求的请求头完整列表：
 
-| 参数                                                            |    类型     |                       默认值                        |  支持版本  |                  必填                  | 描述                                                                                                                              |
-|---------------------------------------------------------------|:---------:|:------------------------------------------------:|:------:|:------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------|
-| [x-cb-apikey](/zh-cn/parameters?id=APIKEY)                    | `string`  | [去控制台获取](https://console.cloudbypass.com/#/api/) | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 访问穿云API时使用的密钥                                                                                                                   |
-| [x-cb-host](/zh-cn/parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                  | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 请求的目标域名，如：opensea.io，不要填协议和路径                                                                                                   |
-| [x-cb-protocol](/zh-cn/parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                                      | 请求协议，如：http、https                                                                                                               |
-| [x-cb-fp](/zh-cn/parameters?id=X-Cb-Fp)                       | `string`  |                     "chrome"                     |  `v1`  |                                      | 客户端指纹，默认是Chrome浏览器的指纹。除此之外还支持Firefox、Edge。                                                                                      |
-| [x-cb-proxy](/zh-cn/parameters?id=X-Cb-Proxy)                 | `string`  |                                                  | `所有版本` |                                      | 自定义代理地址，可以是IP或域名。<br />支持http、socks5协议，如：http://proxy.com:8080 或 http://username:password:proxy.com:8080。<br />协议头可选，不填默认为http。 |
-| x-cb-version                                                  | `string`  |                                                  | `所有版本` |                                      | 当您需要使用穿云v2时，该请求头值应为`2`。                                                                                                         |
-| [x-cb-part](/zh-cn/parameters?id=X-Cb-Part)                   | `integer` |                        0                         |  `v2`  |                                      | 该请求头仅在穿云v2时有效，用于区分不同的会话，用户最多可以拥有1000个会话分区（0~999）。                                                                               |
-| [x-cb-origin](/zh-cn/parameters?id=关于浏览器跨域的问题)                | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的origin字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
-| [x-cb-referer](/zh-cn/parameters?id=关于浏览器跨域的问题)               | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的referer字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                           |
-| x-cb-cookie                                                   | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的cookie字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
-| [x-cb-sitekey](/zh-cn/parameters?id=如何获取sitekey)              | `string`  |                                                  |  `v2`  |                                      | 填写后将触发Turnstile小部件验证。在请求数据中将cf_token值设置为[cf_token]，验证结果将自动替填充后请求。                                                               |
-| [x-cb-options](/zh-cn/parameters?id=配置选项列表)                   | `string`  |                                                  | `所有版本` |                                      | 配置选项列表，可以填写多个附加配置选项，逗号分隔。详细请查看[配置选项列表](/zh-cn/parameters?id=配置选项列表)。                                                            |
+| 参数                                                                    |    类型     |                       默认值                        |  支持版本  |                  必填                  | 描述                                                                                                                              |
+|-----------------------------------------------------------------------|:---------:|:------------------------------------------------:|:------:|:------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------|
+| [x-cb-apikey](/zh-cn/request_parameters?id=APIKEY)                    | `string`  | [去控制台获取](https://console.cloudbypass.com/#/api/) | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 访问穿云API时使用的密钥                                                                                                                   |
+| [x-cb-host](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                  | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 请求的目标域名，如：opensea.io，不要填协议和路径                                                                                                   |
+| [x-cb-protocol](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                                      | 请求协议，如：http、https                                                                                                               |
+| [x-cb-fp](/zh-cn/request_parameters?id=X-Cb-Fp)                       | `string`  |                     "chrome"                     |  `v1`  |                                      | 客户端指纹，默认是Chrome浏览器的指纹。除此之外还支持Firefox、Edge。                                                                                      |
+| [x-cb-proxy](/zh-cn/request_parameters?id=X-Cb-Proxy)                 | `string`  |                                                  | `所有版本` |                                      | 自定义代理地址，可以是IP或域名。<br />支持http、socks5协议，如：http://proxy.com:8080 或 http://username:password:proxy.com:8080。<br />协议头可选，不填默认为http。 |
+| x-cb-version                                                          | `string`  |                                                  | `所有版本` |                                      | 当您需要使用穿云v2时，该请求头值应为`2`。                                                                                                         |
+| [x-cb-part](/zh-cn/request_parameters?id=X-Cb-Part)                   | `integer` |                        0                         |  `v2`  |                                      | 该请求头仅在穿云v2时有效，用于区分不同的会话，用户最多可以拥有1000个会话分区（0~999）。                                                                               |
+| [x-cb-origin](/zh-cn/request_parameters?id=关于浏览器跨域的问题)                | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的origin字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
+| [x-cb-referer](/zh-cn/request_parameters?id=关于浏览器跨域的问题)               | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的referer字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                           |
+| x-cb-cookie                                                           | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的cookie字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
+| [x-cb-sitekey](/zh-cn/request_parameters?id=如何获取sitekey)              | `string`  |                                                  |  `v2`  |                                      | 填写后将触发Turnstile小部件验证。在请求数据中将cf_token值设置为[cf_token]，验证结果将自动替填充后请求。                                                               |
+| [x-cb-options](/zh-cn/request_parameters?id=配置选项列表)                   | `string`  |                                                  | `所有版本` |                                      | 配置选项列表，可以填写多个附加配置选项，逗号分隔。详细请查看[配置选项列表](/zh-cn/request_parameters?id=配置选项列表)。                                                    |
 
 ### 配置选项列表
 
 `x-cb-options`请求头配置列表：
 
-| 参数               |  支持版本  | 描述                                                                                                   |
-|------------------|:------:|------------------------------------------------------------------------------------------------------|
-| disable-redirect | `所有版本` | 禁用重定向，服务端遇到300~399响应码时将会返回，Set-Cookie将会返回完整内容。（默认自动处理重定向，SDK默认配置）。                                   |
-| force            |  `v2`  | 正常情况下，在穿云V2会话期内无法更换代理，会返回`BYPASS_ERROR`错误。使用`force`配置可以强制替换代理。                                       |
-| ignore-lock      |  `v2`  | 使用忽略锁策略，当两个或多个请求同时使用同一个会话时，直接忽略验证挑战锁，可以防止出现**CHALLENGE_LOCK_TIMEOUT**或**CHALLENGE_LOCK_OCCUPIED**错误。 |
-| wait-lock        |  `v2`  | 使用等待锁策略，当两个或多个请求同时使用同一个会话时，可以防止出现CHALLENGE_LOCK_TIMEOUT错误。（比ignore-lock优先级更高）                        |
+| 参数                                                     |  支持版本  | 描述                                                                                                             |
+|--------------------------------------------------------|:------:|----------------------------------------------------------------------------------------------------------------|
+| disable-redirect                                       | `所有版本` | 禁用重定向，服务端遇到300~399响应码时将会返回，Set-Cookie将会返回完整内容。（默认自动处理重定向，SDK默认配置）。                                             |
+| force                                                  |  `v2`  | 正常情况下，在穿云V2会话期内无法更换代理，会返回[`BYPASS_ERROR`](zh-cn/response_data?id=错误代码)错误。使用`force`配置可以强制替换代理。                  |
+| [ignore-lock](zh-cn/request_parameters?id=关于v2并发请求的问题) |  `v2`  | 使用忽略挑战锁配置，当两个或多个请求同时使用同一个会话时，直接忽略验证挑战锁，可以防止出现**CHALLENGE_LOCK_TIMEOUT**或**CHALLENGE_LOCK_OCCUPIED**错误。         |
+| [wait-lock](zh-cn/request_parameters?id=关于v2并发请求的问题)   |  `v2`  | 使用等待挑战锁配置，当两个或多个请求同时使用同一个会话时，可以防止出现[CHALLENGE_LOCK_TIMEOUT](zh-cn/response_data?id=错误代码)错误。（比ignore-lock优先级更高） |
 
 ### APIKEY
 
 `APIKEY`为每个账户唯一的穿云API请求授权访问密钥，是访问穿云API的必要参数之一。
 
-?> 若`APIKEY`出现泄露问题，可通过访问[穿云API控制台](https://console.cloudbypass.com/#/api/)刷新。
+?> 若`APIKEY`出现泄露问题，可以访问[穿云API控制台](https://console.cloudbypass.com/#/api/)重置。
 
 访问`https://opensea.io/category/memberships`，请求示例：
 
@@ -229,10 +233,10 @@ public class Main {
 
 ### X-Cb-Host、X-Cb-Protocol
 
-`X-Cb-Host`和`X-Cb-Protocol`也是访问穿云API的必要参数之一。
+`X-Cb-Host`和`X-Cb-Protocol`也是访问穿云API的必要参数。
 `X-Cb-Protocol`默认为https，所以一般不用设置。
 
-?> 将原始请求URL中的协议、主机域名(也可以是IP)、端口号替换为穿云API地址(`https://api.cloudbypass.com`)，`X-Cb-Host`
+?> 将原始请求URL中的协议、主机域名（或IP）、端口号替换为穿云API地址(`https://api.cloudbypass.com`)，`X-Cb-Host`
 则填写被替换掉的主机域名。
 如下HTTP示例：
 
@@ -246,7 +250,7 @@ X-Cb-Apikey: <APIKEY>
 X-Cb-Host: example.io
 ```
 
-如果原始请求是http协议：
+##### 如果原始请求是http协议：
 
 ```http request
 # 原始请求
@@ -258,10 +262,6 @@ X-Cb-Apikey: <APIKEY>
 X-Cb-Host: example.io
 X-Cb-Protocol: http
 ```
-
-> 您可以了解一下：HTTP基础请求由请求行、请求头、请求体组成，其中请求行包含了请求方法、请求URL、HTTP协议版本。
-> 由于穿云API使用HTTP代理转发的模式，在使用穿云API请求时，需要在原始请求上对**请求URL**、**请求头**进行一些调整。
-> 经过调整后的请求将由穿云API代理访问目标地址。
 
 ### X-Cb-Proxy
 
@@ -428,16 +428,16 @@ const axios = require('axios');
 
 const url = "https://api.cloudbypass.com/accounts/label/lido";
 const headers = {
-  'x-cb-apikey': '/* APIKEY */',
-  'x-cb-host': 'etherscan.io',
-  'x-cb-version': '2',
-  'x-cb-part': '0',
-  'x-cb-proxy': '/* PROXY */',
+    'x-cb-apikey': '/* APIKEY */',
+    'x-cb-host': 'etherscan.io',
+    'x-cb-version': '2',
+    'x-cb-part': '0',
+    'x-cb-proxy': '/* PROXY */',
 };
 
 axios.get(url, {}, {headers: headers})
-        .then(response => console.log(response.data))
-        .catch(error => console.error(error));
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
 ```
 
 * **Nodejs SDK**
@@ -447,17 +447,17 @@ axios.get(url, {}, {headers: headers})
 import cloudbypass from 'cloudbypass-sdk';
 
 cloudbypass.get('https://etherscan.io/accounts/label/lido', {
-  cb_apikey: '/* APIKEY */',
-  cb_part: '0',
-  cb_proxy: '/* PROXY */'
+    cb_apikey: '/* APIKEY */',
+    cb_part: '0',
+    cb_proxy: '/* PROXY */'
 })
-.then(function (response) {
-  console.log(response.status, response.headers.get("x-cb-status"));
-  console.log(response.data);
-})
-.catch(function (error) {
-  console.log(error.response.data || error.response || error.message);
-});
+    .then(function (response) {
+        console.log(response.status, response.headers.get("x-cb-status"));
+        console.log(response.data);
+    })
+    .catch(function (error) {
+        console.log(error.response.data || error.response || error.message);
+    });
 ```
 
 #### **Java**
@@ -499,13 +499,14 @@ public class Main {
 ?> 推荐多线程请求的情况下，每个线程使用单独的`part`发起请求，可以避免以下模式中出现的各种问题。这样合理使用`part`
 可以避免出现更多验证以及减少积分、流量、时间的消耗。(多线程推荐)
 
-* `default` 默认情况下遇到验证锁时会返回`CHALLENGE_LOCK_OCCUPIED`错误。这表示有一条同`host`、`part`的请求正在验证中。
+* `default` 默认情况下遇到验证锁时会返回[`CHALLENGE_LOCK_OCCUPIED`](zh-cn/response_data?id=错误代码)
+  错误。这表示有一条同`host`、`part`的请求正在验证中。
 * `ignore-lock` 忽略验证锁，通过请求头`x-cb-options: ignore-lock`设置。
     * 优点：可以避免所有锁错误
     * 缺点：消耗更多的积分、流量、时间
 * `wait-lock` 等待验证锁，通过请求头`x-cb-options: wait-lock`设置。
-    * 优点：可以避免`CHALLENGE_LOCK_OCCUPIED`错误，等待验证通过后将会直接使用新的Cookie完成请求
-    * 缺点：如果等待时间过长，可能出现`CHALLENGE_LOCK_TIMEOUT`错误
+    * 优点：可以避免[`CHALLENGE_LOCK_OCCUPIED`](zh-cn/response_data?id=错误代码)错误，等待验证通过后将会直接使用新的Cookie完成请求
+    * 缺点：如果等待时间过长，可能出现[`CHALLENGE_LOCK_TIMEOUT`](zh-cn/response_data?id=错误代码)错误
 
 ### 关于浏览器跨域的问题
 
@@ -521,7 +522,7 @@ public class Main {
 
 这里`sitekey`是指调用`turnstile`部件的主要参数，每个站点都有单独的`turnstile sitekey`。
 
-?> 注意：`cloudflare js`质询不需要填写sitekey
+?> 注意：`js质询`不需要填写sitekey
 
 1. 打开浏览器`开发者工具`（Ctrl+Shift+I或F12）
 2. 点击`网络`选项卡，确保`记录网络日志`按钮的状态如图所示<br />
