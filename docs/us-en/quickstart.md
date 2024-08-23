@@ -3,7 +3,7 @@
 > Scrapingbypass can help you easily bypass Cloudflare's verification. Currently, it supports bypassing JS challenge,
 > Turnstile and other product verifications. This document provides detailed usage of
 > Scrapingbypass [HTTP API](/us-en/request_parameters), [local proxy tool](/us-en/proxy_tools)
-> and [SDK](/us-en/quickstart?id=Code Sample).
+> and [SDK](/us-en/quickstart?id=code-sample).
 
 ### Workflow
 
@@ -11,7 +11,7 @@ Scrapingbypass API request flow
 
 ![cloudbypass_api_fc.svg](img/cloudbypass_api_fc.svg)
 
-?> Whether you use the [local proxy tool](/us-en/proxy_tools) or [SDK](/us-en/quickstart?id=Code Sample), you are only
+?> Whether you use the [local proxy tool](/us-en/proxy_tools) or [SDK](/us-en/quickstart?id=code-sample), you are only
 forwarding the request, which is actually an HTTP API request.
 
 ### Get APIKEY

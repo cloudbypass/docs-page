@@ -5,7 +5,7 @@
 
 ### Get tools
 
-Visit the [Scrapingbypass API Proxy Client release page](https://github.com/cloudbypass/example/releases) to download the executable program and root certificate for the corresponding platform
+Visit the [API Proxy Client release page](https://github.com/cloudbypass/example/releases) to download the executable program and root certificate for the corresponding platform
 
 ### Startup parameters
 
