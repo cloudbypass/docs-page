@@ -1,6 +1,6 @@
 # Check account balance
 
-You can check your account balance via [Login console](https://console.cloudbypass.com/#/api/)
+You can check your account balance via [Login console](https://console.scrapingbypass.com/#/api/)
 
 ### Via HTTP API
 

@@ -16,7 +16,7 @@ forwarding the request, which is actually an HTTP API request.
 
 ### Get APIKEY
 
-Visit the [Scrapingbypass API console](https://console.cloudbypass.com/#/api/) to register an account and obtain the APIKEY.
+Visit the [Scrapingbypass API console](https://console.scrapingbypass.com/#/api/) to register an account and obtain the APIKEY.
 
 ### Code Sample
 
@@ -30,7 +30,7 @@ Check out the existing [code examples](https://github.com/cloudbypass/example) t
 
 ### Accessibility Testing
 
-By using the [Code Generator](https://console.cloudbypass.com/#/code-generator) to check whether the target website can be breached, newly registered users can [Customer Support](https://t.me/cloudbypass) to get a trial.
+By using the [Code Generator](https://console.scrapingbypass.com/#/code-generator) to check whether the target website can be breached, newly registered users can [Customer Support](https://t.me/cloudbypass) to get a trial.
 
 ### About version
 
@@ -65,5 +65,5 @@ Scrapingbypass v1 comes with a dynamic proxy by default, and you can also set up
 
 ### Get Help
 
-* [Visit the forum](https://www.cloudbypass.com/blog/)
+* [Visit the forum](https://www.scrapingbypass.com/blog/)
 * [Customer Support](https://t.me/cloudbypass)

@@ -83,5 +83,5 @@ The error message is a piece of data in JSON format, containing the following fi
 
 ### Question Feedback
 
-* [Visit the forum](https://www.cloudbypass.com/blog/)
+* [Visit the forum](https://www.scrapingbypass.com/blog/)
 * [Customer Support](https://t.me/cloudbypass)

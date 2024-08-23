@@ -13,11 +13,11 @@ server {
     server_name  example.io;
 
      location / {
-        proxy_pass https://api.cloudbypass.com;
+        proxy_pass https://api.scrapingbypass.com;
         proxy_set_header x-cb-host proxy.io;
         proxy_set_header x-cb-apikey <APIKEY>;
         proxy_ssl_server_name on;
-        proxy_ssl_name api.cloudbypass.com;
+        proxy_ssl_name api.scrapingbypass.com;
     }
 }
 ```

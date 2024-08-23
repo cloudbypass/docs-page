@@ -13,7 +13,7 @@ Visit the [API Proxy Client release page](https://github.com/cloudbypass/example
 |----|-------------------------------------------|
 | -k | (Optional) Scrapingbypass API service key, configure the default request header `x-cb-apikey`      |
 | -l | (Optional) Service listening address (default "0.0.0.0:1087")      |
-| -s | (Optional) Service address (default "api.cloudbypass.com") |
+| -s | (Optional) Service address (default "api.scrapingbypass.com") |
 | -x | (Optional) Configure the Scrapingbypass API request proxy. This value will be passed into the `x-cb-proxy` request header.    |
 
 ### Startup Command
@@ -25,7 +25,7 @@ Visit the [API Proxy Client release page](https://github.com/cloudbypass/example
 > cfb-mitm -k 0000000000000000 -x http:example.io:1288 -l 127.0.0.1:1087
 
 # OUTPUT
-# api.cloudbypass.com -> 127.0.0.1:1087
+# api.scrapingbypass.com -> 127.0.0.1:1087
 # Please use proxy 127.0.0.1:1087
 ```
 
@@ -55,4 +55,4 @@ curl --request GET ^
 
 # About the software
 
-This software is provided by [Scrapingbypass API](https://cloudbypass.com/). It is strictly prohibited to use this software to engage in illegal activities such as fraud, theft of other people's accounts, funds, service attacks, etc.
+This software is provided by [Scrapingbypass API](https://scrapingbypass.com/). It is strictly prohibited to use this software to engage in illegal activities such as fraud, theft of other people's accounts, funds, service attacks, etc.

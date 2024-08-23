@@ -1,1 +1,1 @@
-[**English**](/us-en/)
+[**English**](/us-en/ ':ignore title :target=_self')

@@ -12,10 +12,10 @@ The Scrapingbypass API uses the HTTPS protocol and supports all HTTP request met
 address protocol and host name with the Scrapingbypass API address to access it. The following is the request address of
 the Scrapingbypass API:
 
-`https://api.cloudbypass.com`
+`https://api.scrapingbypass.com`
 
 ?> If you want to request `https://example.io/user/login.html`, you need to change it
-to `https://api.cloudbypass.com/user/login.html`
+to `https://api.scrapingbypass.com/user/login.html`
 
 ### Header configuration
 
@@ -25,7 +25,7 @@ n addition to the URL, the following request header parameters are required:
   access the Scrapingbypass API.
 * [`x-cb-host`](/us-en/request_parameters?id=x-cb-host、x-cb-protocol) *
   The target server host name or IP address, including the port. If you access `https://www.example.com/to/path`, this
-  parameter is `www.example.com` and the request address is `https://api.cloudbypass.com/to/path`.
+  parameter is `www.example.com` and the request address is `https://api.scrapingbypass.com/to/path`.
 * [`x-cb-proxy`](/us-en/request_parameters?id=X-Cb-Proxy) *Set up a proxy server. Scrapingbypass V1 has a default
   dynamic proxy; Scrapingbypass V2 must set up a fixed or time-sensitive IP proxy.
 
@@ -36,7 +36,7 @@ The following is a complete list of request headers used for custom requests:
 
 | PARAMETER                                                             |   TYPE    |                          DEFAULT                           | SUPPORTED VERSION |               Required               | DESCRIPTION                                                                                                                                                                                                                                                    |
 |-----------------------------------------------------------------------|:---------:|:----------------------------------------------------------:|:------------------:|:------------------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [x-cb-apikey](/us-en/request_parameters?id=APIKEY)                    | `string`  |    [Get APIKEY](https://console.cloudbypass.com/#/api/)    |       `All`        | ![yes.svg](img%2Fyes.svg ":no-zoom") | The key to use when accessing the Scrapingbypass API.                                                                                                                                                                                                          |
+| [x-cb-apikey](/us-en/request_parameters?id=APIKEY)                    | `string`  |    [Get APIKEY](https://console.scrapingbypass.com/#/api/)    |       `All`        | ![yes.svg](img%2Fyes.svg ":no-zoom") | The key to use when accessing the Scrapingbypass API.                                                                                                                                                                                                          |
 | [x-cb-host](/us-en/request_parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                            |       `All`        | ![yes.svg](img%2Fyes.svg ":no-zoom") | The target domain name of the request, such as opensea.io. Do not fill in the protocol and path.                                                                                                                                                               |
 | [x-cb-protocol](/us-en/request_parameters?id=x-cb-host、x-cb-protocol) | `string`  |                          "https"                           |       `All`        |                                      | Request protocol, such as http, https.                                                                                                                                                                                                                         |
 | [x-cb-fp](/us-en/request_parameters?id=X-Cb-Fp)                       | `string`  | [Version distinction](/us-en/request_parameters?id=x-cb-fp) |        `v1`        |                                      | Client fingerprint.                                                                                                                                                                                                                                            |
@@ -65,7 +65,7 @@ The following is a complete list of request headers used for custom requests:
 `APIKEY` is a unique Scrapingbypass API request authorization access key for each account and is one of the necessary
 parameters for accessing the Scrapingbypass API.
 
-?> If the `APIKEY` is leaked, you can visit the [Scrapingbypass API Console](https://console.cloudbypass.com/#/api/) to
+?> If the `APIKEY` is leaked, you can visit the [Scrapingbypass API Console](https://console.scrapingbypass.com/#/api/) to
 reset it.
 
 Visit https://opensea.io/category/memberships and request an example:
@@ -78,13 +78,13 @@ Visit https://opensea.io/category/memberships and request an example:
 ```shell
 # linux
 curl --request GET \
---url "https://api.cloudbypass.com/category/memberships" \
+--url "https://api.scrapingbypass.com/category/memberships" \
 --header "x-cb-apikey: <APIKEY>" \
 --header "x-cb-host: opensea.io"
 
 # windows
 curl --request GET ^
---url "https://api.cloudbypass.com/category/memberships" ^
+--url "https://api.scrapingbypass.com/category/memberships" ^
 --header "x-cb-apikey: <APIKEY>" ^
 --header "x-cb-host: opensea.io"
 ```
@@ -94,7 +94,7 @@ curl --request GET ^
 ```Python
 import requests
 
-url = "https://api.cloudbypass.com/category/memberships"
+url = "https://api.scrapingbypass.com/category/memberships"
 
 headers = {
     'x-cb-apikey': '<APIKEY>',
@@ -137,7 +137,7 @@ func main() {
 	client.Header.Add("X-Cb-Apikey", "/* APIKEY */")
 	client.Header.Add("X-Cb-Host", "opensea.io")
 
-	resp, err := client.R().Get("https://api.cloudbypass.com/category/memberships")
+	resp, err := client.R().Get("https://api.scrapingbypass.com/category/memberships")
 
 	if err != nil {
 		fmt.Println(err)
@@ -184,7 +184,7 @@ func main() {
 ```javascript
 const axios = require('axios');
 
-const url = "https://api.cloudbypass.com/category/memberships";
+const url = "https://api.scrapingbypass.com/category/memberships";
 const headers = {
     'x-cb-apikey': '/* APIKEY */',
     'x-cb-host': 'opensea.io',
@@ -224,7 +224,7 @@ import java.net.http.HttpResponse;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String url = "https://api.cloudbypass.com/category/memberships";
+        String url = "https://api.scrapingbypass.com/category/memberships";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -247,7 +247,7 @@ public class Main {
 `X-Cb-Protocol` defaults to https, so it generally does not need to be set.
 
 ?> Replace the protocol, host domain name (or IP), and port number in the original request URL with the Scrapingbypass
-API address (`https://api.cloudbypass.com`), and fill in the replaced host domain name in `X-Cb-Host`.
+API address (`https://api.scrapingbypass.com`), and fill in the replaced host domain name in `X-Cb-Host`.
 The following is an HTTP example:
 
 ```http request
@@ -255,7 +255,7 @@ The following is an HTTP example:
 GET https://example.io/user/login.html
 
 # Modified request
-GET https://api.cloudbypass.com/user/login.html
+GET https://api.scrapingbypass.com/user/login.html
 X-Cb-Apikey: <APIKEY>
 X-Cb-Host: example.io
 ```
@@ -267,7 +267,7 @@ X-Cb-Host: example.io
 GET http://example.io/user/login.html
 
 # Modified request
-GET https://api.cloudbypass.com/user/login.html
+GET https://api.scrapingbypass.com/user/login.html
 X-Cb-Apikey: <APIKEY>
 X-Cb-Host: example.io
 X-Cb-Protocol: http
@@ -320,7 +320,7 @@ visit `https://etherscan.io/accounts/label/lido` and request an example:
 ```shell
 # linux
 curl --request GET \
---url "https://api.cloudbypass.com/accounts/label/lido" \
+--url "https://api.scrapingbypass.com/accounts/label/lido" \
 --header "x-cb-apikey: <APIKEY>" \
 --header "x-cb-host: etherscan.io" \
 --header "x-cb-version: 2" \
@@ -329,7 +329,7 @@ curl --request GET \
 
 # windows
 curl --request GET ^
---url "https://api.cloudbypass.com/accounts/label/lido" ^
+--url "https://api.scrapingbypass.com/accounts/label/lido" ^
 --header "x-cb-apikey: <APIKEY>" ^
 --header "x-cb-host: etherscan.io" ^
 --header "x-cb-version: 2" ^
@@ -342,7 +342,7 @@ curl --request GET ^
 ```Python
 import requests
 
-url = "https://api.cloudbypass.com/accounts/label/lido"
+url = "https://api.scrapingbypass.com/accounts/label/lido"
 
 headers = {
     'x-cb-apikey': '<APIKEY>',
@@ -391,7 +391,7 @@ func main() {
 	client.Header.Add("X-Cb-Version", "2")
 	client.Header.Add("X-Cb-Part", "0")
 
-	resp, err := client.R().Get("https://api.cloudbypass.com/accounts/label/lido")
+	resp, err := client.R().Get("https://api.scrapingbypass.com/accounts/label/lido")
 
 	if err != nil {
 		fmt.Println(err)
@@ -440,7 +440,7 @@ func main() {
 ```javascript
 const axios = require('axios');
 
-const url = "https://api.cloudbypass.com/accounts/label/lido";
+const url = "https://api.scrapingbypass.com/accounts/label/lido";
 const headers = {
     'x-cb-apikey': '/* APIKEY */',
     'x-cb-host': 'etherscan.io',
@@ -486,7 +486,7 @@ import java.net.http.HttpResponse;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String url = "https://api.cloudbypass.com/accounts/label/lido";
+        String url = "https://api.scrapingbypass.com/accounts/label/lido";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
