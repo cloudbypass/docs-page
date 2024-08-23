@@ -44,7 +44,7 @@ API请求。
 
 > 当遇到以下`js质询`或者`turnstile`部件时使用
 
-![turnstile.png](img%2Fturnstile.gif ":no-zoom")
+![turnstile.png](img%2Fturnstile.gif ":no-zoom :size=350")
 
 ?> 穿云V2必须提供固定或具有时效性的IP代理才能运作。
 

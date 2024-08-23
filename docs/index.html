@@ -51,7 +51,10 @@
         logo: '/_media/icon.png',
         // themeColor: '#5d70f8',
         fallbackLanguages: ['zh-cn'],
-
+        coverpage: {
+            '/us-en/': '_coverpage.md',
+            '/zh-cn/': '_coverpage.md',
+        },
         // 按照路由切换
         nameLink: {
             '/zh-cn/': '#/zh-cn/quickstart',
@@ -60,6 +63,7 @@
         },
         // Sidebar Configuration
         auto2top: true,
+        loadNavbar: true,
         loadSidebar: true,
         alias: {
             '/*/_sidebar.md': '/_sidebar.md'

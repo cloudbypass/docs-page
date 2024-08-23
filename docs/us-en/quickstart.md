@@ -44,7 +44,7 @@ Scrapingbypass v1 comes with a dynamic proxy by default, and you can also set up
 
 > Used when encountering the following `JS challenge` or `turnstile` components
 
-![turnstile.png](img%2Fturnstile.gif ":no-zoom")
+![turnstile.png](img%2Fturnstile.gif ":no-zoom :size=350")
 
 ?> Scrapingbypass V2 must provide a fixed or time-sensitive IP proxy to work.
 
