@@ -30,7 +30,7 @@
 | [x-cb-apikey](/zh-cn/request_parameters?id=APIKEY)                    | `string`  | [去控制台获取](https://console.cloudbypass.com/#/api/) | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 访问穿云API时使用的密钥                                                                                                                   |
 | [x-cb-host](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                  | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 请求的目标域名，如：opensea.io，不要填协议和路径                                                                                                   |
 | [x-cb-protocol](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                                      | 请求协议，如：http、https                                                                                                               |
-| [x-cb-fp](/zh-cn/request_parameters?id=X-Cb-Fp)                       | `string`  |                     "chrome"                     |  `v1`  |                                      | 客户端指纹，默认是Chrome浏览器的指纹。除此之外还支持Firefox、Edge。                                                                                      |
+| [x-cb-fp](/zh-cn/request_parameters?id=X-Cb-Fp)                       | `string`  |   [版本区分](zh-cn/request_parameters?id=x-cb-fp)    |  `v1`  |                                      | 客户端指纹。                                                                                                                          |
 | [x-cb-proxy](/zh-cn/request_parameters?id=X-Cb-Proxy)                 | `string`  |                                                  | `所有版本` |                                      | 自定义代理地址，可以是IP或域名。<br />支持http、socks5协议，如：http://proxy.com:8080 或 http://username:password:proxy.com:8080。<br />协议头可选，不填默认为http。 |
 | x-cb-version                                                          | `string`  |                                                  | `所有版本` |                                      | 当您需要使用穿云v2时，该请求头值应为`2`。                                                                                                         |
 | [x-cb-part](/zh-cn/request_parameters?id=X-Cb-Part)                   | `integer` |                        0                         |  `v2`  |                                      | 该请求头仅在穿云v2时有效，用于区分不同的会话，用户最多可以拥有1000个会话分区（0~999）。                                                                               |
@@ -277,13 +277,13 @@ X-Cb-Protocol: http
 
 ### X-Cb-Fp
 
-设置API代理请求时使用的浏览器指纹。以下是支持列表
+设置请求时使用的浏览器指纹。以下是支持列表
 
-* 穿云V1
+* 穿云V1（默认`chrome`）
     * `chrome`
     * `firefox`
     * `edge`
-* 穿云V2
+* 穿云V2（默认`edge-linux`）
     * `chrome`、`chrome-linux`、`chrome-mac`、`chrome127`、`chrome127-linux`、`chrome127-mac`
     * `edge`、`edge-linux`、`edge-mac`、`edge127`、`edge127-linux`、`edge127-mac`
     * `chrome-android`、`edge-android`、`chrome127-android`、`edge127-android`
@@ -297,7 +297,7 @@ X-Cb-Protocol: http
 
 ### 使用穿云V2进行请求
 
-穿云API V2适用于需要通过JS质询验证的网站。例如访问`https://etherscan.io/accounts/label/lido`，请求示例：
+穿云API V2适用于需要通过`JS质询`验证的网站。例如访问`https://etherscan.io/accounts/label/lido`，请求示例：
 
 <!-- tabs:start -->
 
@@ -494,13 +494,13 @@ public class Main {
 
 ### 关于V2并发请求的问题
 
-遇到验证时会根据`host`、`part`进行上锁，验证完成后释放。所以默认情况下`host`、`part`锁定状态下是无法进行请求的。
+遇到验证时会根据`"{host}_{part}"`进行上锁，验证完成后释放，所以默认`"{host}_{part}"`锁定状态下是无法进行请求的。
 
 ?> 推荐多线程请求的情况下，每个线程使用单独的`part`发起请求，可以避免以下模式中出现的各种问题。这样合理使用`part`
 可以避免出现更多验证以及减少积分、流量、时间的消耗。(多线程推荐)
 
 * `default` 默认情况下遇到验证锁时会返回[`CHALLENGE_LOCK_OCCUPIED`](zh-cn/response_data?id=错误代码)
-  错误。这表示有一条同`host`、`part`的请求正在验证中。
+  错误，这表示有一条同`"{host}_{part}"`的请求正在验证中。
 * `ignore-lock` 忽略验证锁，通过请求头`x-cb-options: ignore-lock`设置。
     * 优点：可以避免所有锁错误
     * 缺点：消耗更多的积分、流量、时间
@@ -514,8 +514,8 @@ public class Main {
 > 同源策略是一种安全机制，它要求协议、域名和端口都相同才能认为是同源。这是为了防止恶意网站读取或操作其他网站的数据。
 > 跨域资源共享（CORS）是一种解决跨域问题的技术，它允许浏览器向不同源的服务器发送HTTP请求。
 
-一般浏览器在请求接口时会自动补充`origin`、`referer`这些站点无法控制的请求头。
-这些请求头到穿云API后也会被转发至目标服务器，导致请求失败。
+一般浏览器在请求接口时会自动补充`origin`、`referer`这些站点无法控制的请求头，
+这些请求头到穿云API后也会被转发至目标服务器，导致请求失败，
 所以通过配置`x-cb-origin`、`x-cb-referer`可以对部分跨域相关请求头进行覆盖。
 
 ### 如何获取sitekey
