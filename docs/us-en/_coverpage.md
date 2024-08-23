@@ -1,6 +1,6 @@
 ![icon.png](../_media/icon.png)
 
-# Cloudbypass API
+# Scrapingbypass API
 
 > Using Scrapingbypass can help you easily bypass Cloudflare's verification. It currently supports bypassing JS challenges, Turnstile and other product verifications.
 
