@@ -1,29 +1,29 @@
 # Python SDK
 
-> Cloudbypass Python SDK 仅支持 Python 3.6 及以上版本。
+> The Cloudbypass Python SDK only supports Python 3.6 and above.
 
-在`psf/requests`基础上封装的穿云SDK，支持穿云API服务的调用。通过内置的会话管理器，可以自动处理会话请求，无需手动管理Cookie等信息。
+The CloudCross SDK, which is encapsulated on the basis of `psf/requests`, supports the call of Scrapingbypass API service. Through the built-in session manager, session requests can be automatically processed without manually managing information such as cookies.
 
 [![cloudbypass](https://img.shields.io/pypi/pyversions/cloudbypass)](https://pypi.org/project/cloudbypass/ ":no-zoom")
 [![cloudbypass](https://img.shields.io/pypi/v/cloudbypass)](https://pypi.org/project/cloudbypass/ ":no-zoom")
 [![cloudbypass](https://img.shields.io/pypi/dd/cloudbypass)](https://pypi.org/project/cloudbypass/#files ":no-zoom")
 [![cloudbypass](https://img.shields.io/pypi/wheel/cloudbypass)](https://pypi.org/project/cloudbypass/ ":no-zoom")
 
-### 安装
+### Install
 
 ```shell
 python3 -m pip install cloudbypass -i https://pypi.org/simple
 ```
 
-### 发起请求
+### Send Request
 
-`Session`类继承自`requests.Session`，支持`requests`的所有方法。
+The `Session` class inherits from `requests.Session` and supports all methods of `requests`.
 
-增加初始化参数`apikey`和`proxy`，分别用于设置穿云API服务密钥和代理IP。
+Added initialization parameters `apikey` and `proxy` to set the Scrapingbypass API service key and proxy IP respectively.
 
-定制用户可以通过设置`api_host`参数来指定服务地址。
+Custom users can specify the service address by setting the `api_host` parameter.
 
-> 以上参数可使用环境变量`CB_APIKEY`、`CB_PROXY`和`CB_APIHOST`进行配置。
+> The above parameters can be configured using the environment variables `CB_APIKEY`, `CB_PROXY`, and `CB_APIHOST`.
 
 ```python
 from cloudbypass import Session
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
 #### async
 
-`AsyncSession`类继承自`aiohttp.ClientSession`，支持`aiohttp`的所有方法。
+The `AsyncSession` class inherits from `aiohttp.ClientSession` and supports all methods of `aiohttp`.
 
 ```python
 import asyncio
@@ -58,9 +58,9 @@ if __name__ == '__main__':
     loop.run_until_complete(main())
 ```
 
-### 使用V2
+### Using V2
 
-穿云API V2适用于需要通过JS质询验证的网站。例如访问https://etherscan.io/accounts/label/lido ，请求示例：
+Scrapingbypass API V2 is suitable for websites that need to pass JS challenge verification. For example, visit https://etherscan.io/accounts/label/lido and request an example:
 
 ```python
 from cloudbypass import Session
@@ -93,9 +93,9 @@ if __name__ == '__main__':
     loop.run_until_complete(main())
 ```
 
-### 查询余额
+### Check balance
 
-使用`get_balance`方法可以查询当前账户余额。
+Use the `get_balance` method to query the current account balance.
 
 ```python
 from cloudbypass import get_balance
@@ -122,18 +122,18 @@ if __name__ == '__main__':
 
 ```
 
-### 提取代理
+### Extraction Proxy
 
-通过`Proxy`类可以提取穿云动态代理IP和时效代理IP。
+The `Proxy` class can be used to extract the cloud-bypass dynamic proxy IP and time-sensitive proxy IP.
 
-+ `copy()` 复制当前对象，使原有的对象不会受到影响。
-+ `set_dynamic()` 设置为动态代理。
-+ `set_expire(int)` 设置为时效代理，参数为IP过期时间，单位为秒。
-+ `set_region(str)` 设置代理IP地区。
-+ `clear_region()` 清除代理的地区。
-+ `format(str)` 格式化代理IP，参数为格式化字符串，例如`{username}:{password}@gateway`。
-+ `limit(int, str)` 返回一个代理IP字符串迭代器，参数为提取数量及代理格式化字符串。
-+ `loop(int, str)` 返回一个代理IP字符串循环迭代器，参数为实际数量及代理格式化字符串。
++ `copy()` Duplicate the current object so that the original object will not be affected.
++ `set_dynamic()` Set as dynamic proxy。
++ `set_expire(int)` Set to time-limited proxy, the parameter is the IP expiration time, in seconds.
++ `set_region(str)` Set the proxy IP region.
++ `clear_region()` Clear the area of the agent.
++ `format(str)` Format proxy IP. The parameter is a formatted string, for example, `{username}:{password}@gateway`.
++ `limit(int, str)` Returns a proxy IP string iterator, with the parameters being the extraction quantity and the proxy format string.
++ `loop(int, str)` Returns a proxy IP string loop iterator, the parameters are the actual number and the proxy format string.
 
 ```python
 from cloudbypass import Proxy
@@ -141,28 +141,28 @@ from cloudbypass import Proxy
 if __name__ == '__main__':
     proxy = Proxy("username-res:password")
 
-    # 提取动态代理
+    # Extracting dynamic proxies
     print("Extract dynamic proxy: ")
     print(str(proxy.set_dynamic()))
     print(str(proxy.set_region('US')))
 
-    # 提取时效代理并指定地区
+    # Extract time agent and specify region
     print("Extract proxy with expire and region: ")
     print(str(proxy.copy().set_expire(60 * 30).set_region('US')))
 
-    # 批量提取
+    # Batch Extraction
     print("Extract five 10-minute aging proxies: ")
     pool = proxy.copy().set_expire(60 * 10).set_region('US').limit(5)
     for _ in pool:
         print(_)
 
-    # 循环提取
+    # Cycle Extraction
     print("Loop two 10-minute aging proxies: ")
     loop = proxy.copy().set_expire(60 * 10).set_region('US').loop(2)
     for _ in range(10):
         print(loop.__next__())
 ```
 
-### 关于重定向问题
+### About redirection issues
 
-使用SDK发起请求时，重定向操作会自动处理，无需手动处理。且重定向响应也会消耗积分。
+When using the SDK to initiate a request, the redirection operation is automatically handled without manual processing. The redirection response will also consume credits.

@@ -1,4 +1,4 @@
-# 请求参数配置
+# 请求参数
 
 > 您可以了解一下：HTTP基础请求由请求行、请求头、请求体组成，其中请求行包含了请求方法、请求URL、HTTP协议版本。
 > <br/>由于穿云API使用HTTP API进行代理转发的模式，在使用穿云API请求时，需要在原始请求上对**请求URL**、**请求头**进行一些调整。
@@ -27,9 +27,9 @@
 
 | 参数                                                                    |    类型     |                       默认值                        |  支持版本  |                  必填                  | 描述                                                                                                                              |
 |-----------------------------------------------------------------------|:---------:|:------------------------------------------------:|:------:|:------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------|
-| [x-cb-apikey](/zh-cn/request_parameters?id=APIKEY)                    | `string`  | [去控制台获取](https://console.cloudbypass.com/#/api/) | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 访问穿云API时使用的密钥                                                                                                                   |
-| [x-cb-host](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                  | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 请求的目标域名，如：opensea.io，不要填协议和路径                                                                                                   |
-| [x-cb-protocol](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                                      | 请求协议，如：http、https                                                                                                               |
+| [x-cb-apikey](/zh-cn/request_parameters?id=APIKEY)                    | `string`  | [去控制台获取](https://console.cloudbypass.com/#/api/) | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 访问穿云API时使用的密。                                                                                                                   |
+| [x-cb-host](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                  | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 请求的目标域名，如：opensea.io，不要填协议和路径。                                                                                                  |
+| [x-cb-protocol](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                                      | 请求协议，如：http、https。                                                                                                              |
 | [x-cb-fp](/zh-cn/request_parameters?id=X-Cb-Fp)                       | `string`  |   [版本区分](zh-cn/request_parameters?id=x-cb-fp)    |  `v1`  |                                      | 客户端指纹。                                                                                                                          |
 | [x-cb-proxy](/zh-cn/request_parameters?id=X-Cb-Proxy)                 | `string`  |                                                  | `所有版本` |                                      | 自定义代理地址，可以是IP或域名。<br />支持http、socks5协议，如：http://proxy.com:8080 或 http://username:password:proxy.com:8080。<br />协议头可选，不填默认为http。 |
 | x-cb-version                                                          | `string`  |                                                  | `所有版本` |                                      | 当您需要使用穿云v2时，该请求头值应为`2`。                                                                                                         |
@@ -37,12 +37,12 @@
 | [x-cb-origin](/zh-cn/request_parameters?id=关于浏览器跨域的问题)                | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的origin字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
 | [x-cb-referer](/zh-cn/request_parameters?id=关于浏览器跨域的问题)               | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的referer字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                           |
 | x-cb-cookie                                                           | `string`  |                                                  | `所有版本` |                                      | 替换请求头中的cookie字段，一般用于浏览器跨域请求绕过CORS限制。                                                                                            |
-| [x-cb-sitekey](/zh-cn/request_parameters?id=如何获取sitekey)              | `string`  |                                                  |  `v2`  |                                      | 填写后将触发Turnstile小部件验证。在请求数据中将cf_token值设置为[cf_token]，验证结果将自动替填充后请求。                                                               |
+| [x-cb-sitekey](/zh-cn/request_parameters?id=如何获取sitekey)              | `string`  |                                                  |  `v2`  |                                      | 填写后将触发`Turnstile`小部件验证。在请求数据中将cf_token值设置为[cf_token]，验证结果将自动替填充后请求。                                                               |
 | [x-cb-options](/zh-cn/request_parameters?id=配置选项列表)                   | `string`  |                                                  | `所有版本` |                                      | 配置选项列表，可以填写多个附加配置选项，逗号分隔。详细请查看[配置选项列表](/zh-cn/request_parameters?id=配置选项列表)。                                                    |
 
 ### 配置选项列表
 
-`x-cb-options`请求头配置列表：
+`x-cb-options`请求头配置选项列表：
 
 | 参数                                                     |  支持版本  | 描述                                                                                                             |
 |--------------------------------------------------------|:------:|----------------------------------------------------------------------------------------------------------------|

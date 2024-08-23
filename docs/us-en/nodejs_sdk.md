@@ -1,18 +1,18 @@
 # Nodejs SDK
 
-> Cloudbypass Nodejs SDK 依赖于 [Axios](https://axios-http.com/)。
+> Cloudbypass Nodejs SDK depends on [Axios](https://axios-http.com/)。
 
-保留axios的所有请求配置，并支持**⚠跨域请求**和Cookie管理。
+Keep all request configurations of axios and support **⚠cross-domain requests** and Cookie management.
 
-在`psf/requests`基础上封装的穿云SDK，支持穿云API服务的调用。通过内置的会话管理器，可以自动处理会话请求，无需手动管理Cookie等信息。
+The CloudCross SDK, which is encapsulated on the basis of `psf/requests`, supports the call of Scrapingbypass API service. Through the built-in session manager, session requests can be automatically processed without manually managing information such as cookies.
 
 [![npm version](https://img.shields.io/npm/v/cloudbypass-sdk.svg?style=flat-square)](https://www.npmjs.org/package/cloudbypass-sdk ":no-zoom")
 [![install size](https://img.shields.io/badge/dynamic/json?url=https://packagephobia.com/v2/api.json?p=cloudbypass-sdk&query=$.install.pretty&label=install%20size&style=flat-square)](https://packagephobia.now.sh/result?p=cloudbypass-sdk ":no-zoom")
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/cloudbypass-sdk?style=flat-square)](https://bundlephobia.com/package/cloudbypass-sdk@latest ":no-zoom")
 
-### 安装
+### Install
 
-#### 包管理器安装
+#### Package Manager Installation
 
 Using npm:
 
@@ -32,34 +32,34 @@ Using pnpm:
 $ pnpm add cloudbypass-sdk
 ```
 
-### 使用
+### Usage
 
-安装包后，您可以使用import以下require方法导入库：
+Once the package is installed, you can import the library using the require method:
 
 ```js
 // Using Node.js `require()`
 const cloudbypass = require('cloudbypass-sdk');
 ```
 
-或者，如果您使用的是ES模块：
+Or, if you're using ES modules:
 
 ```js
 // Using ES6 imports
 import cloudbypass from 'cloudbypass-sdk';
 ```
 
-### 发起请求
+### Send Request
 
-引入`cloudbypass-sdk`后，您可以将其当作`axios`使用。
+After importing `cloudbypass-sdk`, you can use it as `axios`.
 
-`config`参数支持所有`axios`的请求配置，并支持以下配置：
+The `config` parameter supports all `axios` request configurations and supports the following configurations:
 
-- `cb_apikey` API密钥;
-- `cb_part` 使用V2时设置part参数即可;
-- `cb_proxy` 代理地址，支持http和socks5代理;
-- `cb_apihost` 定制用户可以使用自己的API服务器;
+- `cb_apikey` APIKey;
+- `cb_part` When using V2, just set the part parameter;
+- `cb_proxy` Proxy address, supports http and socks5 proxy;
+- `cb_apihost` Custom users can use their own API server;
 
-> 以上参数可使用环境变量`CB_APIKEY`、`CB_PROXY`和`CB_APIHOST`进行配置。
+> The above parameters can be configured using the environment variables `CB_APIKEY`, `CB_PROXY`, and `CB_APIHOST`.
 
 ```js
 import cloudbypass from 'cloudbypass-sdk';
@@ -78,9 +78,9 @@ cloudbypass.get('https://opensea.io/category/memberships', {
     });
 ```
 
-### 使用V2
+### Using V2
 
-穿云API V2适用于需要通过JS质询验证的网站。例如访问https://etherscan.io/accounts/label/lido ，请求示例：
+Scrapingbypass API V2 is suitable for websites that need to pass JS challenge verification. For example, visit https://etherscan.io/accounts/label/lido and request an example:
 
 ```js
 import cloudbypass from 'cloudbypass';
@@ -101,9 +101,9 @@ cloudbypass.get('https://etherscan.io/accounts/label/lido', {
     });
 ```
 
-### 查询余额
+### Check balance
 
-使用`getBalance`方法可以查询当前账户余额。
+Use the `getBalance` method to query the current account balance.
 
 ```js
 import cloudbypass from 'cloudbypass-sdk';
@@ -117,42 +117,42 @@ cloudbypass.getBalance(/* APIKEY */).then(balance => {
 })
 ```
 
-### 提取代理
+### Extraction Proxy
 
-通过`cloudbypass.createProxy(auth: string)`方法可以创建一个`CloudbypassProxy`实例，该实例可提取穿云动态代理IP和时效代理IP。
+The `cloudbypass.createProxy(auth: string)` method can be used to create a `CloudbypassProxy` instance, which can extract the cloud-piercing dynamic proxy IP and time-sensitive proxy IP.
 
-+ `copy()` 复制代理实例，使原有代理实例不受影响。
-+ `setDynamic()` 设置为动态代理。
-+ `setExpire(expire: number)` 设置为时效代理，参数为IP过期时间，单位为秒。
-+ `setRegion(region: string)` 设置代理IP地区。
-+ `clearRegion()` 清除代理的地区。
-+ `toString()` 返回代理IP字符串。
-+ `format(format_str?: string)` 格式化代理IP，参数为格式化字符串，例如：`username:password@gateway`。
-+ `limit(count: number, format_str?: string)` 返回一个代理IP字符串迭代器，参数为提取数量及代理格式化字符串。
-+ `loop(count: number, format_str?: string)` 返回一个代理IP字符串循环迭代器，参数为实际数量及代理格式化字符串。
++ `copy()` Duplicate the proxy instance so that the original proxy instance is not affected.
++ `setDynamic()` Set as dynamic proxy.
++ `setExpire(expire: number)` Set to time-limited proxy, the parameter is the IP expiration time, in seconds.
++ `setRegion(region: string)` Set the proxy IP region.
++ `clearRegion()` Clear the area of the agent.
++ `toString()` Returns the proxy IP string.
++ `format(format_str?: string)` Format proxy IP. The parameter is a formatted string, for example: `username:password@gateway`.
++ `limit(count: number, format_str?: string)` Returns a proxy IP string iterator, with the parameters being the extraction quantity and the proxy format string.
++ `loop(count: number, format_str?: string)` Returns a proxy IP string loop iterator, the parameters are the actual number and the proxy format string.
 
 ```js
 import cloudbypass from 'cloudbypass-sdk';
 
 const proxy = cloudbypass.createProxy("username-res:password");
 
-// 提取动态代理
+// Extracting dynamic proxies
 console.log("Extract dynamic proxy: ")
 console.log(proxy.setDynamic().toString())
 console.log(proxy.setRegion("US").toString())
 
-// 提取时效代理并指定地区
+// Extract time agent and specify region
 console.log("Extract proxy with expire and region: ")
 console.log(proxy.copy().setExpire(60 * 30).setRegion("US").toString())
 
-// 批量提取
+// Batch Extraction
 console.log("Extract five 10-minute aging proxies: ")
 const pool = proxy.copy().setExpire(60 * 10).limit(5);
 for (let p of pool) {
     console.log(p)
 }
 
-// 循环提取
+// Cycle Extraction
 console.log("Loop two 10-minute aging proxies: ")
 const loop = proxy.copy().setExpire(60 * 10).loop(2);
 for (let i = 0; i < 10; i++) {
@@ -160,6 +160,6 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-### 关于重定向问题
+### About redirection issues
 
-使用SDK发起请求时，重定向操作会自动处理，无需手动处理。且重定向响应也会消耗积分。
+When using the SDK to initiate a request, the redirection operation is automatically handled without manual processing. The redirection response will also consume credits.
