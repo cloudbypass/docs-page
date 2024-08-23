@@ -48,7 +48,7 @@ Scrapingbypass v1 comes with a dynamic proxy by default, and you can also set up
 
 ?> Scrapingbypass V2 must provide a fixed or time-sensitive IP proxy to work.
 
-* **Beat the `JS challenge`，Scrapingbypass V2 will automatically challenge**
+* **Beat the `JS challenge`,Scrapingbypass V2 will automatically challenge**
     * After the challenge is successful, the Scrapingbypass service will store the `cloudflare cookie` for 10 minutes. Subsequent requests will automatically use the session for access. After another successful request, the session will be automatically renewed.
     * You can set the session partition by configuring the `x-cb-part` parameter to achieve session isolation.
     * If the challenge fails, a JSON-formatted response body will be sent, including the request ID, [error code](/us-en/response_data?id=error-code), and error information.

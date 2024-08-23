@@ -13,4 +13,4 @@
 
 `apikey` corresponds to the `x-cb-apikey` request header, and the proxy corresponds to the `x-cb-proxy` request header.
 
-?> **Please ignore the `x-cb-host` in the picture.**。
+?> **Please ignore the `x-cb-host` in the picture.**.

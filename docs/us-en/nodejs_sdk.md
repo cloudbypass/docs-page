@@ -1,6 +1,6 @@
 # Nodejs SDK
 
-> Cloudbypass Nodejs SDK depends on [Axios](https://axios-http.com/)。
+> Cloudbypass Nodejs SDK depends on [Axios](https://axios-http.com/).
 
 Keep all request configurations of axios and support **⚠cross-domain requests** and Cookie management.
 

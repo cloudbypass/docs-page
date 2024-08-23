@@ -127,7 +127,7 @@ if __name__ == '__main__':
 The `Proxy` class can be used to extract the cloud-bypass dynamic proxy IP and time-sensitive proxy IP.
 
 + `copy()` Duplicate the current object so that the original object will not be affected.
-+ `set_dynamic()` Set as dynamic proxy。
++ `set_dynamic()` Set as dynamic proxy.
 + `set_expire(int)` Set to time-limited proxy, the parameter is the IP expiration time, in seconds.
 + `set_region(str)` Set the proxy IP region.
 + `clear_region()` Clear the area of the agent.
