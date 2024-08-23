@@ -2,8 +2,8 @@
 
 > Scrapingbypass can help you easily bypass Cloudflare's verification. Currently, it supports bypassing JS challenge,
 > Turnstile and other product verifications. This document provides detailed usage of
-> Scrapingbypass [HTTP API](us-en/request_parameters), [local proxy tool](us-en/proxy_tools)
-> and [SDK](us-en/quickstart?id=Code Sample).
+> Scrapingbypass [HTTP API](/us-en/request_parameters), [local proxy tool](/us-en/proxy_tools)
+> and [SDK](/us-en/quickstart?id=Code Sample).
 
 ### Workflow
 
@@ -11,7 +11,7 @@ Scrapingbypass API request flow
 
 ![cloudbypass_api_fc.svg](img/cloudbypass_api_fc.svg)
 
-?> Whether you use the [local proxy tool](us-en/proxy_tools) or [SDK](us-en/quickstart?id=Code Sample), you are only
+?> Whether you use the [local proxy tool](/us-en/proxy_tools) or [SDK](/us-en/quickstart?id=Code Sample), you are only
 forwarding the request, which is actually an HTTP API request.
 
 ### Get APIKEY
@@ -25,8 +25,8 @@ Check out the existing [code examples](https://github.com/cloudbypass/example) t
 ![GitHub last commit](https://img.shields.io/github/last-commit/cloudbypass/example ":no-zoom")
 
 * [Python SDK](/us-en/python_sdk) ![PyPI - Version](https://img.shields.io/pypi/v/cloudbypass ":no-zoom")
-* [Nodejs SDK](us-en/nodejs_sdk) ![NPM Version](https://img.shields.io/npm/v/cloudbypass-sdk ":no-zoom")
-* [Go SDK](us-en/golang_sdk) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/cloudbypass/golang-sdk ":no-zoom")
+* [Nodejs SDK](/us-en/nodejs_sdk) ![NPM Version](https://img.shields.io/npm/v/cloudbypass-sdk ":no-zoom")
+* [Go SDK](/us-en/golang_sdk) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/cloudbypass/golang-sdk ":no-zoom")
 
 ### Accessibility Testing
 
@@ -53,7 +53,7 @@ Scrapingbypass v1 comes with a dynamic proxy by default, and you can also set up
     * You can set the session partition by configuring the `x-cb-part` parameter to achieve session isolation.
     * If the challenge fails, a JSON-formatted response body will be sent, including the request ID, [error code](/us-en/response_data?id=error-code), and error information.
 * **Breaking out the `turnstile` widget**
-    * Users need to provide [`sitekey`](us-en/request_parameters?id=how-to-get-sitekey) and fill it in the request header `x-cb-sitekey`.
+    * Users need to provide [`sitekey`](/us-en/request_parameters?id=how-to-get-sitekey) and fill it in the request header `x-cb-sitekey`.
     * Generally, after verification, `turnstile` will return a token string starting with `0.`. It may also be `cf-turnstile-response`, `turnstileToken`, etc., but with different names.
     * Scrapingbypass V2 will not return its token to the client. Add the `[cf-token]` string where the token is required. Scrapingbypass will automatically fill it in and initiate the request.
         * [Example 1](https://github.com/cloudbypass/example/blob/main/code/com/berachain/faucet/artio/api_claim.py#L20)

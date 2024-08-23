@@ -30,7 +30,7 @@
 | [x-cb-apikey](/zh-cn/request_parameters?id=APIKEY)                    | `string`  | [去控制台获取](https://console.cloudbypass.com/#/api/) | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 访问穿云API时使用的密。                                                                                                                   |
 | [x-cb-host](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol)     | `string`  |                                                  | `所有版本` | ![yes.svg](img%2Fyes.svg ":no-zoom") | 请求的目标域名，如：opensea.io，不要填协议和路径。                                                                                                  |
 | [x-cb-protocol](/zh-cn/request_parameters?id=x-cb-host、x-cb-protocol) | `string`  |                     "https"                      | `所有版本` |                                      | 请求协议，如：http、https。                                                                                                              |
-| [x-cb-fp](/zh-cn/request_parameters?id=X-Cb-Fp)                       | `string`  |   [版本区分](zh-cn/request_parameters?id=x-cb-fp)    |  `v1`  |                                      | 客户端指纹。                                                                                                                          |
+| [x-cb-fp](/zh-cn/request_parameters?id=X-Cb-Fp)                       | `string`  |   [版本区分](/zh-cn/request_parameters?id=x-cb-fp)    |  `v1`  |                                      | 客户端指纹。                                                                                                                          |
 | [x-cb-proxy](/zh-cn/request_parameters?id=X-Cb-Proxy)                 | `string`  |                                                  | `所有版本` |                                      | 自定义代理地址，可以是IP或域名。<br />支持http、socks5协议，如：http://proxy.com:8080 或 http://username:password:proxy.com:8080。<br />协议头可选，不填默认为http。 |
 | x-cb-version                                                          | `string`  |                                                  | `所有版本` |                                      | 当您需要使用穿云v2时，该请求头值应为`2`。                                                                                                         |
 | [x-cb-part](/zh-cn/request_parameters?id=X-Cb-Part)                   | `integer` |                        0                         |  `v2`  |                                      | 该请求头仅在穿云v2时有效，用于区分不同的会话，用户最多可以拥有1000个会话分区（0~999）。                                                                               |
@@ -47,9 +47,9 @@
 | 参数                                                     |  支持版本  | 描述                                                                                                             |
 |--------------------------------------------------------|:------:|----------------------------------------------------------------------------------------------------------------|
 | disable-redirect                                       | `所有版本` | 禁用重定向，服务端遇到300~399响应码时将会返回，Set-Cookie将会返回完整内容。（默认自动处理重定向，SDK默认配置）。                                             |
-| force                                                  |  `v2`  | 正常情况下，在穿云V2会话期内无法更换代理，会返回[`BYPASS_ERROR`](zh-cn/response_data?id=错误代码)错误。使用`force`配置可以强制替换代理。                  |
-| [ignore-lock](zh-cn/request_parameters?id=关于v2并发请求的问题) |  `v2`  | 使用忽略挑战锁配置，当两个或多个请求同时使用同一个会话时，直接忽略验证挑战锁，可以防止出现**CHALLENGE_LOCK_TIMEOUT**或**CHALLENGE_LOCK_OCCUPIED**错误。         |
-| [wait-lock](zh-cn/request_parameters?id=关于v2并发请求的问题)   |  `v2`  | 使用等待挑战锁配置，当两个或多个请求同时使用同一个会话时，可以防止出现[CHALLENGE_LOCK_TIMEOUT](zh-cn/response_data?id=错误代码)错误。（比ignore-lock优先级更高） |
+| force                                                  |  `v2`  | 正常情况下，在穿云V2会话期内无法更换代理，会返回[`BYPASS_ERROR`](/zh-cn/response_data?id=错误代码)错误。使用`force`配置可以强制替换代理。                  |
+| [ignore-lock](/zh-cn/request_parameters?id=关于v2并发请求的问题) |  `v2`  | 使用忽略挑战锁配置，当两个或多个请求同时使用同一个会话时，直接忽略验证挑战锁，可以防止出现**CHALLENGE_LOCK_TIMEOUT**或**CHALLENGE_LOCK_OCCUPIED**错误。         |
+| [wait-lock](/zh-cn/request_parameters?id=关于v2并发请求的问题)   |  `v2`  | 使用等待挑战锁配置，当两个或多个请求同时使用同一个会话时，可以防止出现[CHALLENGE_LOCK_TIMEOUT](/zh-cn/response_data?id=错误代码)错误。（比ignore-lock优先级更高） |
 
 ### APIKEY
 
@@ -499,14 +499,14 @@ public class Main {
 ?> 推荐多线程请求的情况下，每个线程使用单独的`part`发起请求，可以避免以下模式中出现的各种问题。这样合理使用`part`
 可以避免出现更多验证以及减少积分、流量、时间的消耗。(多线程推荐)
 
-* `default` 默认情况下遇到验证锁时会返回[`CHALLENGE_LOCK_OCCUPIED`](zh-cn/response_data?id=错误代码)
+* `default` 默认情况下遇到验证锁时会返回[`CHALLENGE_LOCK_OCCUPIED`](/zh-cn/response_data?id=错误代码)
   错误，这表示有一条同`"{host}_{part}"`的请求正在验证中。
 * `ignore-lock` 忽略验证锁，通过请求头`x-cb-options: ignore-lock`设置。
     * 优点：可以避免所有锁错误
     * 缺点：消耗更多的积分、流量、时间
 * `wait-lock` 等待验证锁，通过请求头`x-cb-options: wait-lock`设置。
-    * 优点：可以避免[`CHALLENGE_LOCK_OCCUPIED`](zh-cn/response_data?id=错误代码)错误，等待验证通过后将会直接使用新的Cookie完成请求
-    * 缺点：如果等待时间过长，可能出现[`CHALLENGE_LOCK_TIMEOUT`](zh-cn/response_data?id=错误代码)错误
+    * 优点：可以避免[`CHALLENGE_LOCK_OCCUPIED`](/zh-cn/response_data?id=错误代码)错误，等待验证通过后将会直接使用新的Cookie完成请求
+    * 缺点：如果等待时间过长，可能出现[`CHALLENGE_LOCK_TIMEOUT`](/zh-cn/response_data?id=错误代码)错误
 
 ### 关于浏览器跨域的问题
 

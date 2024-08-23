@@ -13,5 +13,5 @@ curl "https://console.example.io/api/v1/balance?apikey=<APIKEY>"
 ### 通过SDK
 
 * [Python](/zh-cn/python_sdk?id=查询余额)
-* [Nodejs](zh-cn/nodejs_sdk?id=查询余额)
-* [Go](zh-cn/golang_sdk?id=查询余额)
+* [Nodejs](/zh-cn/nodejs_sdk?id=查询余额)
+* [Go](/zh-cn/golang_sdk?id=查询余额)

@@ -1,5 +1,5 @@
 # Cloudbypass Documentation
 
 
-* [**中文**](zh-cn/quickstart)
-* [**English**](us-en/quickstart)
+* [**中文**](/zh-cn/)
+* [**English**](/us-en/)

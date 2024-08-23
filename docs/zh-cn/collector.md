@@ -2,7 +2,7 @@
 
 ### 火车头采集器
 
-1. 下载启动[穿云API代理服务客户端](zh-cn/proxy_tools)
+1. 下载启动[穿云API代理服务客户端](/zh-cn/proxy_tools)
 2. 在火车头中新建任务，在其他设置的代理设置里配置`http://127.0.0.1:1087`代理
 
 ![huochetou_bjrw.png](img%2Fhuochetou_bjrw.png)

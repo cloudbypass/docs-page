@@ -13,5 +13,5 @@ curl "https://console.example.io/api/v1/balance?apikey=<APIKEY>"
 ### Via SDK
 
 * [Python](/us-en/python_sdk?id=check-balance)
-* [Nodejs](us-en/nodejs_sdk?id=check-balance)
-* [Go](us-en/golang_sdk?id=check-balance)
+* [Nodejs](/us-en/nodejs_sdk?id=check-balance)
+* [Go](/us-en/golang_sdk?id=check-balance)
