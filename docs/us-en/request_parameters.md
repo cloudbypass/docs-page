@@ -293,10 +293,10 @@ Set the browser fingerprint used when making requests. The following is a list o
     * `chrome`
     * `firefox`
     * `edge`
-* Scrapingbypass V2 (default `edge-linux`)
-    * `chrome`、`chrome-linux`、`chrome-mac`、`chrome127`、`chrome127-linux`、`chrome127-mac`
-    * `edge`、`edge-linux`、`edge-mac`、`edge127`、`edge127-linux`、`edge127-mac`
-    * `chrome-android`、`edge-android`、`chrome127-android`、`edge127-android`
+* Scrapingbypass V2 (default `edge128-linux`)
+    * `chrome`、`chrome-linux`、`chrome-mac`、`chrome127`、`chrome127-linux`、`chrome127-mac`、`chrome128`、`chrome128-linux`、`chrome128-mac`
+    * `edge`、`edge-linux`、`edge-mac`、`edge127`、`edge127-linux`、`edge127-mac`、`edge128`、`edge128-linux`、`edge128-mac`
+    * `chrome-android`、`edge-android`、`chrome127-android`、`edge127-android`、`chrome128-android`、`edge128-android`
 
 ### X-Cb-Part
 
