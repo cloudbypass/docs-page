@@ -7,7 +7,7 @@ You can check your account balance via [Login console](https://console.scrapingb
 Get the real-time points balance of your account through HTTP API and key. You can use any program or script to call this interface.
 
 ```shell
-curl "https://console.example.io/api/v1/balance?apikey=<APIKEY>"
+curl "https://console.scrapingbypass.com/api/v1/balance?apikey=<APIKEY>"
 ```
 
 ### Via SDK
